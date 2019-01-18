@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<h1>{{ page.title | markdownify }}</h1>
+<p class="author">
+<span class="date">{{ page.date | date_to_string }} — Written by {{ page.author }}</span><br/>
+<span class="tags">Tagged as: {{ page.tags | sort_natural | array_to_sentence_string }}</span>
+</p>
+
+<div class="content">
+{{content}}
+</div>
