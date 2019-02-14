@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=@ewg
+Name=EWG Mailinglist Archive Search
+Query=http://lists.isocpp.org/ext/cgi-bin/swish.cgi?query=\\{@}
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

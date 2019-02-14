@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=@sg1
+Name=SG1 Mailinglist Archive Search
+Query=http://lists.isocpp.org/parallel/cgi-bin/swish.cgi?query=\\{@}
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

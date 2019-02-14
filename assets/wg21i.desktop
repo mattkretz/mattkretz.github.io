@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=wg21i
+Name=C++ WD Index
+Query=http://eel.is/c++draft/generalindex#:\\{@}
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

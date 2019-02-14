@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=wg21w
+Name=WG21 Wiki
+Query=http://wiki.edg.com/bin/view/Main/WebSearchAdvanced?search=\\{@}&scope=all&web=all&sort=topic&limit=50
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

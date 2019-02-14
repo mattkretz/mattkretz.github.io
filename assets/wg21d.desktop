@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=wg21d
+Name=C++ WD search
+Query=https://duckduckgo.com/?q=\\{@}+site%3Aeel.is%2Fc%2B%2Bdraft%2F&t=kde
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

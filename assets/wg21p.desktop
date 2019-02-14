@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=wg21p
+Name=WG21 paper search
+Query=https://duckduckgo.com/?q=\\{@}+site%3Aopen-std.org%2FJTC1%2FSC22%2FWG21%2Fdocs%2Fpapers%2F&t=kde
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=cpp
+Name=C++ Reference
+Query=http://en.cppreference.com/mwiki/index.php?title=Special:Search&search=\\{@}
+ServiceTypes=SearchProvider
+Type=Service

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=@lweg
+Name=LEWG Mailinglist Archive Search
+Query=http://lists.isocpp.org/lib-ext/cgi-bin/swish.cgi?query=\\{@}
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

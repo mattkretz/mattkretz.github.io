@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=@cwg
+Name=CWG Mailinglist Archive Search
+Query=http://lists.isocpp.org/core/cgi-bin/swish.cgi?query=\\{@}
+Type=Service
+X-KDE-ServiceTypes=SearchProvider

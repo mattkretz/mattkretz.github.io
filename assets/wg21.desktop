@@ -1,0 +1,8 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=wg21
+Name=WG21.link
+Query=https://wg21.link/\\{@}
+ServiceTypes=SearchProvider
+Type=Service
