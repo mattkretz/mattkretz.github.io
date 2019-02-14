@@ -24,7 +24,8 @@ given anchor.
 - [@lwg:](/assets/@lwg.desktop) Searches through the LWG reflector archive.
 - [@lewg:](/assets/@lewg.desktop) Searches through the LEWG reflector archive.
 - [@sg1:](/assets/@sg1.desktop) Searches through the SG1 reflector archive.
-- [cpp:](/assets/cpp.desktop) Searches on cppreference.com
+- [cpp:](/assets/cpp.desktop) Searches on cppreference.com.
 
-You can save those files to `~/.local/share/kservices5/searchproviders/` and 
-use them yourself. (A restart of `krunner` is needed it seems.)
+Save these files ([tarball of all files](/assets/web_shortcuts.tar.gz)) to 
+`~/.local/share/kservices5/searchproviders/` to use them yourself. (A restart 
+of `krunner` is needed it seems.)
