@@ -71,16 +71,16 @@ b'\cdot\sqrt{(a\cdot\hat{b})^2+(b\cdot\hat{b})^2}$$, with $$\hat{b} =
 The $$\frac{1}{b'}$$ division is a trivial operation, though, because it just 
 needs to flip the sign of the exponent. After all, $$b'$$ was constructed to be 
 a power-of-2 value: $$b'=2^n \Rightarrow \hat{b} = 2^{-n}$$. If you recall how 
-the exponent is stored in an IEEE754 floating point value, you might know that 
-flipping all exponent bits almost produces the correct result. It's just off by 
-one. And if the exponent is off by one, the resulting floating point value is 
-off by a factor of 2.
+the exponent is stored in an IEEE754 floating point value, you might realize 
+that flipping all exponent bits almost produces the correct result. It's just 
+off by one. And if the exponent is off by one, the resulting floating point 
+value is off by a factor of 2.
 
-$$\Rightarrow \hat{b} = (b' + b') $$`^`$$ ∞$$ (or in code: `b_hat = ((b + b) & 
-infinity) ^ infinity`; the xor operator is not defined for `float`, but you get 
-the idea).  Note that using an addition instead of multiply by two is faster 
-for two reasons (An optimizing compiler will turn `2*x` into `x+x` by itself, 
-so feel free to forget about this optimization.):
+$$\Rightarrow \hat{b} = 2b' $$`^`$$ ∞$$ (or in code: `b_hat = ((b & infinity) ^ 
+infinity) * .5`; the xor operator is not defined for `float`, but you get the 
+idea).  Note that using an addition instead of multiply by two is faster for 
+two reasons (An optimizing compiler will turn `2*x` into `x+x` by itself, so 
+feel free to forget about this optimization.):
 1. it doesn't require loading a constant value (`0x4000'0000` in this case);
 2. addition instructions typically have a lower latency than multiplication 
    instructions.
@@ -89,10 +89,10 @@ $$\frac{b}{b'} = b\cdot\hat{b}$$ is another trivial bit operation if we look
 closely. $$b'$$ was constructed to store the exponent of $$b$$. Thus 
 $$\frac{b}{b'}$$ is $$b$$ with its exponent set to $$2^0 = 1$$. Using a 
 bitwise-and and bitwise-or operation, we can easily overwrite the exponent of 
-$$b$$ to avoid the multiplication $$b\cdot\hat{b} = $$`(b & (min - lowest)) | 
-1`. The CPU can therefore schedule $$(b\cdot\hat{b})^2$$ earlier and thus also 
-execute the following FMA and square root earlier, reducing the total latency 
-of the `hypot` function.
+$$b$$ to avoid the multiplication $$b\cdot\hat{b} = $$`(b & (min - denorm_min)) 
+| 1`.  The CPU can therefore schedule $$(b\cdot\hat{b})^2$$ earlier and thus 
+also execute the following FMA and square root earlier, reducing the total 
+latency of the `hypot` function.
 
 ### Subnormal, NaN, Zero, and Infinity
 There are corner cases. A proper implementation must care for the Annex F 
@@ -131,12 +131,13 @@ simd<T, Abi> hypot(const simd<T, Abi>& x, const simd<T, Abi>& y)
     // yields NaN) by using min()
     V scale = 1 / Limits::min();
     // invert exponent w/o error and w/o using the slow divider unit:
-    where(hi > Limits::min(), scale) = ((hi + hi) & inf) ^ inf;
+    where(hi > Limits::min(), scale) = ((hi & inf) ^ inf) * T(.5);
     // adjust final exponent for subnormal inputs
     V hi_exp                          = Limits::min();
     where(hi > Limits::min(), hi_exp) = hi & inf;
-    constexpr V mant_mask = Limits::min() - Limits::lowest();
+    constexpr V mant_mask = Limits::min() - Limits::denorm_min();
     V h1 = (hi & mant_mask) | V(1);
+    where(hi < Limits::min(), h1) -= V(1);
     V l1 = lo * scale;
     V r  = hi_exp * sqrt(h1 * h1 + l1 * l1);
 
