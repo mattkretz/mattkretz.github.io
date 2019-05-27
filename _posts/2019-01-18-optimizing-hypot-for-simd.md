@@ -229,3 +229,6 @@ that changes the results:
 `simd<double, __sse>`   | 42.4579 | 2.41916
 `simd<double, __avx>`   | 42.326  | 4.85341
 `simd<double, __avx512>`| 56.3338 | 7.29314
+
+Discuss on 
+[Reddit](https://www.reddit.com/r/cpp/comments/ahbyy4/optimizing_stdhypot_for_simd_arguments/)
