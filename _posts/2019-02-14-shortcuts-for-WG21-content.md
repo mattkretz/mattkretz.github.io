@@ -5,8 +5,6 @@ tags: [C++, WG21, KDE]
 author: Matthias Kretz
 ---
 
-## KDE Web Shortcuts for C++
-
 Since at least KDE 2, the runner (`krunner` - per default on `Alt-F2`) supports 
 configurable prefixes that resolve to a URL that is then opened like 
 `kioclient5 exec` would open them. I created the following shortcuts:

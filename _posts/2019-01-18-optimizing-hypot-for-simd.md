@@ -5,16 +5,16 @@ tags: [C++, SIMD, "std::simd", math, optimization, benchmarking]
 author: Matthias Kretz
 ---
 
-## Pythagoras — it's complicated
-Do you know about `std::hypot(a, b)` and `std::hypot(a, b, c)`? (The 
-3-argument overload exists since C++17, sometimes referred to as hypot3.)  Why 
-do the C and C++ standard libraries provide a function that is as simple as 
-`sqrt(a*a + b*b)`? It doesn't save enough characters to warrant its existence, 
-right? Have you ever considered what happens if the input values are "very" 
-small or large? Or if an input is an IEEE754 special value such as infinity or 
-NaN?  Have you ever considered how precise the calculation is, especially if an 
-exact answer is obvious if one of the inputs is 0?
+Do you know about `std::hypot(a, b)` and `std::hypot(a, b, c)`? (The 3-argument 
+overload exists since C++17, sometimes referred to as hypot3.)  Why do the C 
+and C++ standard libraries provide a function that is as simple as `sqrt(a*a + 
+b*b)`? It doesn't save enough characters to warrant its existence, right? Have 
+you ever considered what happens if the input values are "very" small or large? 
+Or if an input is an IEEE754 special value such as infinity or NaN?  Have you 
+ever considered how precise the calculation is, especially if an exact answer 
+is obvious if one of the inputs is 0?
 
+## Pythagoras — it's complicated
 The standard function is specified to avoid overflow and underflow in 
 intermediate calculations. Consider the following example:
 ```cpp
