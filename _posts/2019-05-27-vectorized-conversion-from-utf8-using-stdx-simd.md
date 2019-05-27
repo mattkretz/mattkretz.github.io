@@ -471,12 +471,12 @@ convinced `pmovzxbd` is more efficient with AVX2.)
 1. `stdx::simd` is quite ready for taking it for a test drive and learning how 
    to best vectorize your applications. You can certainly do serious work with 
    it, but at this point, of course, you don't have full portability and no 
-   100% guarantee for standardization in the proper C++ document. An earlier 
-   implementation of `stdx::simd` was used for a [large distributed application 
-   running on a Xeon Phi cluster](https://journals.sagepub.com/doi/10.1177/1094342018819744).
+   100% guarantee for adoption into the actual C++ standard. Regarding 
+   real-world usage, here's an example of a much earlier implementation of 
+   `stdx::simd` that was used for a [large distributed application running on a 
+   Xeon Phi cluster](https://journals.sagepub.com/doi/10.1177/1094342018819744).
 
-2. I (and Jonathan) need to work on getting `simd` into libstdc++, to make it 
-   easier for you!
+2. I need to push on getting `simd` into libstdc++, to make it easier for you!
 
 3. UTF-8 conversion of non-ASCII characters is possible. I tried it and it can 
    improve the conversion efficiency even more (though not much). But this post 
