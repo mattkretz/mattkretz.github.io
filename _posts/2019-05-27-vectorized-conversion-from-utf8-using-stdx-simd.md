@@ -482,3 +482,6 @@ convinced `pmovzxbd` is more efficient with AVX2.)
    improve the conversion efficiency even more (though not much). But this post 
    is too long already. I hope to find time to write a follow up. Let me know 
    if there's interest.
+
+Discuss on [Hacker News](https://news.ycombinator.com/item?id=20021148) or 
+[Reddit](https://www.reddit.com/r/cpp/comments/btkqix/vectorized_conversion_from_utf8_using_stdxsimd/)
