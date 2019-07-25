@@ -91,11 +91,11 @@ With the help if Iain I was able to understand enough about the GCC frontend
 code to define and call user-defined `operator?:` overloads. The first positive 
 surprise was that I only needed to fix a minor parser omission (GCC didn't 
 recognize `operator?:` as an operator overload and expected to see a cast 
-operator) and comment turn an error message into a `return true` and I was able 
-to define conditional operators. When disassembling the resulting object file 
-(with C++ demangling enabled) the operator was actually shown as `operator?:`. 
-So the mangling for the operator has been defined all this time, just waiting 
-for C++ to finally make it overloadable. ;-)
+operator) and turn an error message into a `return true`. After these two minor 
+changes I was able to define conditional operators. When disassembling the 
+resulting object file (with C++ demangling enabled) the operator was actually 
+shown as `operator?:`. So the mangling for the operator has been defined all 
+this time, just waiting for C++ to finally make it overloadable. ;-)
 
 If you want to try it out, clone my [patched GCC 9 
 branch](https://github.com/mattkretz/gcc/tree/mkretz/overload_ternary) and 
