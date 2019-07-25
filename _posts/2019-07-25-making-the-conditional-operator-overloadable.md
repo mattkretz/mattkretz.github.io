@@ -171,5 +171,5 @@ g(std::experimental::parallelism_v2::simd<int, std::experimental::parallelism_v2
 Nice. I want. (Except for the missed optimization for `x < 0 ? 0 : x`, which 
 should use [`vpminsd`](https://www.felixcloutier.com/x86/pminsd:pminsq).)
 
-Discuss on [Hacker News](https://news.ycombinator.com/item?id=) or 
-[Reddit](https://www.reddit.com/r/cpp/comments/)
+Discuss on [Hacker News](https://news.ycombinator.com/item?id=20525849) or 
+[Reddit](https://www.reddit.com/r/cpp/comments/chopo1/making_the_c_conditional_operator_overloadable/)
