@@ -8,7 +8,7 @@ by Matt Graham
 @import "rouge-base16-dark";
 
 body {
-  font:14px/22px 'Quattrocento Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:15pt/22pt 'Quattrocento Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#666;
   font-weight:300;
   margin: 0px;
@@ -30,11 +30,11 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size:28px;
+  font-size:28pt;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 24pt;
   color:#393939;
 }
 
@@ -43,7 +43,7 @@ h3, h4, h5, h6 {
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 18pt;
   line-height: 24px;
 }
 
@@ -54,10 +54,18 @@ a {
 }
 
 a small {
-  font-size:11px;
+  font-size:11pt;
   color:#666;
   margin-top:-0.6em;
   display:block;
+}
+
+/* Offset anchors by 180 px to be below the header. */
+:target::before {
+  content: "";
+  display: block;
+  height: 180px;
+  margin: -180px 0 0;
 }
 
 ul{
@@ -70,7 +78,7 @@ strong {
 }
 
 .wrapper {
-  width:800px;
+  width:800pt;
   margin:0 auto;
   position:relative;
 }
@@ -161,7 +169,7 @@ header {
   min-height: 76px;
 
   h1 {
-    font: 40px/48px 'Copse', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 40pt/48pt 'Copse', "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #f3f3f3;
     text-shadow: 0px 2px 0px #235796;
     margin: 0px;
@@ -175,7 +183,7 @@ header {
   p {
     color: #d8d8d8;
     text-shadow:rgba(#000, 0.2) 0 1px 0;
-    font-size: 18px;
+    font-size: 18pt;
     margin: 0px;
   }
 }
@@ -204,7 +212,7 @@ header {
     padding: 10px 12px;
     margin-top: 6px;
     line-height:14px;
-    font-size:14px;
+    font-size:14pt;
     color:#333;
     font-weight: bold;
     display:inline-block;
@@ -223,7 +231,7 @@ header {
     padding: 10px 12px;
     margin-top: 6px;
     line-height:14px;
-    font-size:14px;
+    font-size:14pt;
     background-color: #FFE788;
   }
 
@@ -269,41 +277,41 @@ header {
 }
 
 section {
-  width:740px;
-  padding: 30px 30px 50px 30px;
-  margin: 20px 0;
-  margin-top: 190px;
+  width:740pt;
+  padding: 30pt 30pt 50pt 30pt;
+  margin: 20pt 0;
+  margin-top: 190pt;
   position:relative;
   background: #fbfbfb;
-  border-radius: 3px;
+  border-radius: 3pt;
   border: 1px solid #cbcbcb;
   box-shadow: 0px 1px 2px rgba(0,0,0,.09), inset 0px 0px 2px 2px rgba(255,255,255,.5), inset 0 0 5px 5px rgba(255,255,255,.4);
 }
 
 small {
-  font-size:12px;
+  font-size:12pt;
 }
 
 nav {
-  width: 230px;
+  width: 230pt;
   position: fixed;
-  top: 220px;
+  top: 220pt;
   left:50%;
-  margin-left:-580px;
+  margin-left:-580pt;
   text-align: right;
 
   ul {
     list-style: none;
     list-style-image:none;
-    font-size: 14px;
-    line-height:24px;
+    font-size: 14pt;
+    line-height:24pt;
 
     li {
-      padding: 5px 0px;
-      line-height: 16px;
-      // padding-right:17px;
+      padding: 5pt 0pt;
+      line-height: 16pt;
+      // padding-right:17pt;
       // position:relative;
-      // right:-12px;
+      // right:-12pt;
 
       &.tag-h1 {
         font-size: 1.2em;
@@ -321,7 +329,7 @@ nav {
       &.tag-h2 {
 
         + .tag-h1 {
-          margin-top:10px;
+          margin-top:10pt;
         }
       }
     }
@@ -333,20 +341,20 @@ nav {
     }
 
     // .active {
-    //   border-right:solid 4px #39C;
-    //   padding-right:13px;
+    //   border-right:solid 4pt #39C;
+    //   padding-right:13pt;
     // }
   }
 }
 
 footer {
-  width:180px;
+  width:180pt;
   position: fixed;
   left:50%;
-  margin-left:-530px;
-  bottom:20px;
+  margin-left:-530pt;
+  bottom:20pt;
   text-align: right;
-  line-height: 16px;
+  line-height: 16pt;
 }
 
 @media print, screen {
@@ -376,28 +384,28 @@ footer {
     width: 100%;
 
     .downloads {
-        margin-right: 60px;
+        margin-right: 60pt;
       }
 
     .fork {
     }
 
     #logo {
-      margin-right: 15px;
+      margin-right: 15pt;
     }
   }
 
   section {
     border:1px solid #e5e5e5;
     border-width:1px 0;
-    padding:20px auto;
-    margin: 190px auto 20px;
-    max-width: 750px;
+    padding:20pt auto;
+    margin: 190pt auto 20pt;
+    max-width: 750pt;
   }
 
   footer{
     text-align: center;
-    margin: 20px auto;
+    margin: 20pt auto;
     position: relative;
     left:auto;
     bottom:auto;
@@ -405,7 +413,7 @@ footer {
     }
 }
 
-@media print, screen and (max-width: 720px) {
+@media print, screen and (max-width: 720pt) {
   body {
     word-wrap:break-word;
   }
@@ -415,7 +423,7 @@ footer {
     margin: 0;
 
     h1 {
-      font-size: 32px;
+      font-size: 32pt;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -460,7 +468,7 @@ footer {
     min-height: 0px;
 
     h1 {
-      font-size: 24px;
+      font-size: 24pt;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
