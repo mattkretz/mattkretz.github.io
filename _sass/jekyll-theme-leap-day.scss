@@ -8,7 +8,7 @@ by Matt Graham
 @import "rouge-base16-dark";
 
 body {
-  font:15pt/22pt 'Quattrocento Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:15pt/1.5 'Quattrocento Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#666;
   font-weight:300;
   margin: 0px;
@@ -44,7 +44,7 @@ h3, h4, h5, h6 {
 
 h3 {
   font-size: 18pt;
-  line-height: 24px;
+  line-height: 1.3;
 }
 
 a {
@@ -107,6 +107,7 @@ pre {
   border:1px solid #c7c7c7;
   overflow: auto;
   overflow-y: hidden;
+  line-height: 1.15;
 
   code {
     color:#efefef;
@@ -169,11 +170,10 @@ header {
   min-height: 76px;
 
   h1 {
-    font: 40pt/48pt 'Copse', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 40pt/1.2 'Copse', "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #f3f3f3;
     text-shadow: 0px 2px 0px #235796;
     margin: 0px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
@@ -211,7 +211,7 @@ header {
     margin-left: 5px;
     padding: 10px 12px;
     margin-top: 6px;
-    line-height:14px;
+    line-height:1.0;
     font-size:14pt;
     color:#333;
     font-weight: bold;
@@ -230,7 +230,7 @@ header {
     margin-left:-325px;
     padding: 10px 12px;
     margin-top: 6px;
-    line-height:14px;
+    line-height:1.0;
     font-size:14pt;
     background-color: #FFE788;
   }
@@ -241,7 +241,7 @@ header {
 
     span {
       float:left;
-      line-height:52px;
+      line-height:1.2;
       font-size:90%;
       color:#9d7f0d;
       text-transform:uppercase;
@@ -304,11 +304,11 @@ nav {
     list-style: none;
     list-style-image:none;
     font-size: 14pt;
-    line-height:24pt;
+    line-height:2.0;
 
     li {
       padding: 5pt 0pt;
-      line-height: 16pt;
+      line-height: 1.2;
       // padding-right:17pt;
       // position:relative;
       // right:-12pt;
@@ -354,7 +354,7 @@ footer {
   margin-left:-530pt;
   bottom:20pt;
   text-align: right;
-  line-height: 16pt;
+  line-height: 1.1;
 }
 
 @media print, screen {
@@ -372,7 +372,6 @@ footer {
     float:none;
 
     h1 {
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       -o-text-overflow: ellipsis;
@@ -413,7 +412,7 @@ footer {
     }
 }
 
-@media print, screen and (max-width: 720pt) {
+@media print, screen and (max-width: 790pt) {
   body {
     word-wrap:break-word;
   }
@@ -424,11 +423,6 @@ footer {
 
     h1 {
       font-size: 32pt;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -o-text-overflow: ellipsis;
-      -ms-text-overflow: ellipsis;
     }
 
     p { display: none;}
@@ -441,24 +435,34 @@ footer {
       float: left;
       display: inline-block;
       margin-left: 0px;
-    position:fixed;
-    left:20px;
-
-      }
+      position:fixed;
+      left:20px;
+    }
   }
 
   section {
-    margin-top: 130px;
+    margin-top: 130pt;
     margin-bottom: 0px;
     width: auto;
+    padding: 1em;
   }
 
   header ul, header p.view {
     position:static;
   }
+
+  pre {
+    font-size: 12pt;
+  }
+}
+@media print, screen and (max-width: 720pt) {
+  section { margin-top: 140pt; }
+}
+@media print, screen and (max-width: 600pt) {
+  section { margin-top: 150pt; }
 }
 
-@media print, screen and (max-width: 480px) {
+@media print, screen and (max-width: 480pt) {
   body {
   }
 
@@ -469,7 +473,6 @@ footer {
 
     h1 {
       font-size: 24pt;
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       -o-text-overflow: ellipsis;
@@ -478,11 +481,16 @@ footer {
   }
   section {
     margin-top: 5px;
+    padding: 1ex;
   }
 
   #banner { display: none;}
   header ul {
     display:none;
+  }
+
+  pre {
+    font-size: 11pt;
   }
 }
 
