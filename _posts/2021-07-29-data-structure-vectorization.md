@@ -93,7 +93,7 @@ float mean_length(const Points_AoVS& points) {
   for (const auto& p : points) {
     acc += sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
   }
-  return reduce(acc) / points.size();
+  return reduce(acc) / (points.size() * acc.size());
 }
 ```
 
