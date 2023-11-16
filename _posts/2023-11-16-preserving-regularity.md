@@ -69,10 +69,10 @@ To answer this question, consider the basic code transformation underlying the
 over 16 `char`s with one `simd<char, 16>` chunk:
 
 ```c++
-    for (int i = 0; i < 16; ++i) {
-      char x = text[i];  // load 1 character
-      x = unscramble(x); // unscramble 1 character
-      text[i] = x;       // store 1 character
+    for (int i = 0; i < 16; ++i) {  // 16 times do:
+      char x = text[i];             //   load 1 character
+      x = unscramble(x);            //   unscramble 1 character
+      text[i] = x;                  //   store 1 character
     }
 ```
 becomes:
