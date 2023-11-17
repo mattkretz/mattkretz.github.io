@@ -7,7 +7,13 @@ author: Matthias Kretz
 
 In this post I will talk about regularity and why 
 `std::regular<std::simd<int>>` needs to be `false` in order to preserve 
-regularity at the level where it matters: equational reasoning.
+regularity at the level where it matters: equational reasoning. The issue of 
+regularity came up repeatedly when discussing the design of `std::simd` for 
+C++26. (It also came up in 2017 for `std::experimental::simd`.)  My goal for 
+this post is the exploration of options and their consequences. There's a lot 
+more to be said, but this post is already too long. In any case, when talking 
+about regularity, we need start with "Elements of Programming", the book that 
+introduced the concept:
 > A type is *regular* if and only if its basis includes equality, assignment, 
 destructor, default constructor, copy constructor, total ordering, and 
 underlying type. [...]
@@ -27,14 +33,11 @@ example two objects `a` and `b` of type `int` can be compared (`a == b`),
 assigned (`a = b`), destructed (trivial), default constructed (`int a{};`), 
 copy constructed `int a{b}` and there exists a total order defined by `a < b` 
 (the latter is not included in `std::regular`). These are pretty basic 
-guarantees, which we take for granted for builtin types of the language. (Well, 
-if you consider `std::initializer_list<int>` a language type, you may be 
-surprised that `std::regular<std::initializer_list<int>>` is `false`. But then 
-again, initializer lists are not meant to be used in equations 🤷.)
+guarantees, which we take for granted for builtin types of the language.
 
 ## `std::simd` is meant to be used in equations
 
-This is where the trouble with `simd<int>` begins. `simd<int>` is certainly 
+This is where the confusion about `simd<int>` begins. `simd<int>` is certainly 
 meant to be used in equations. Why doesn't that imply `std::regular<simd<int>>` 
 must be `true`? Short answer: because the equations apply to the `int` not the 
 `simd<int>`.
@@ -48,9 +51,8 @@ that? Because we recognize that `(a + b) + c` yields the same result as
 `a + (b + c)`. Hmm "same result"... How can I say that without regularity?
 
 When writing an equation using `simd<int>` types, the mathematically important 
-equation is the one expressed per element. The `simd<int>` as a whole has no 
-meaning. Or, in the formalism introduced in EoP: a `simd<int>` object as a 
-whole does not identify a single *entity*; a `simd` type is not a *value type*.
+equation is the one expressed per element. The `simd<int>` object as a whole 
+does not identify a single *entity*¹; a `simd` type is not a *value type*².
 
 The `simd` abstraction is a tool for expressing the same equation on multiple 
 `int` objects in parallel. It's a tool for manipulating multiple entities — a 
@@ -65,8 +67,15 @@ alternative implies that the comparison result of a different SIMD lane
 ## What if `std::regular<std::simd<T>>` were `true`?
 
 To answer this question, consider the basic code transformation underlying the 
-`std::simd` design. The design intent of `std::simd` is to replace e.g. a loop 
-over 16 `char`s with one `simd<char, 16>` chunk:
+`std::simd` design. For this purpose let's look at an example that involves the 
+inequality operator in an equation. (The need for `<`/`<=`/`>=`/`>` in the 
+implementation of equations is a lot more common. However, since `std::regular` 
+requires only equality I wanted to keep the example on point with using `!=`.) 
+In the example we will consider a simple character transformation function for 
+scrambling/unscrambling text.
+
+The design intent of `std::simd` is to replace e.g. a loop over 16 `char`s with 
+one `simd<char, 16>` chunk:
 
 ```c++
     for (int i = 0; i < 16; ++i) {  // 16 times do:
@@ -86,7 +95,8 @@ where `unscramble` could be:
 ```c++
 auto unscramble(auto x) {
   // always flip bit 0b0010;
-  // flip bit 0b0001 if x has bit 0b1000 or 0b0100 set
+  // flip bit 0b0001 if x has bit 0b1000 or 0b0100 set (the bool result from
+  // the comparison implicitly converts to an integer with value 0 or 1)
   return x ^ (2 | ((x & 0b1100) != 0));
 }
 ```
@@ -123,12 +133,13 @@ int main() {
     `simd_mask`, then the second program prints **"regular entities"** (status 
     quo of the current "merge `simd` from the TS" paper).
 
-Making `simd` itself regular breaks equational reasoning on the level of the 
-`simd` elements. Making `simd` regular at the level of the `simd` elements 
-enables generic code, composition, equational reasoning, and thus allows 
-applying equational optimizations developed for the element type.
+Making `simd<char>` itself regular breaks equational reasoning on the level of 
+the `simd` elements (i.e. breaking regularity of `char`). Making `simd<char>` 
+regular at the level of the `simd<char>` elements enables generic code, 
+composition, equational reasoning, and thus allows applying equational 
+optimizations developed for the element type.
 
-## Alternative: `simd` should not overload any comparison operators
+## Proposed alternative: no comparison operators for `simd`
 
 If `simd::operator==` returning `bool` is such a foot-gun in terms of silently 
 introducing logic errors into the code, and `simd::operator==` returning 
@@ -181,3 +192,27 @@ instructions for ILP (instruction level parallelism), resulting in a slowdown
 rather than performance improvement. Therefore, the `std::simd` API tries to 
 discourage such uses. Consequently, `std::regular<std::simd<T>>` must be 
 `false`.
+
+## Footnotes
+
+¹.
+> An *abstract entity* is an individual thing that is eternal and unchangeable, 
+while a *concrete entity* is an individual thing that comes into and out of 
+existence in space and time. [...] Blue and 13 are examples of abstract 
+entities. Socrates and the United States of America are examples of concrete 
+entities. [...]
+>
+> An *abstract species* describes common properties of essentially equivalent 
+abstract entities. Examples of abstract species are natural number and color. A 
+*concrete species* describes the set of attributes of essentially equivalent 
+concrete entities. Examples of concrete species are man and U.S. state.
+<div style="text-align: right">
+Alexander Stepanov, Paul McJones — Elements of Programming (EoP)
+</div>
+
+².
+> A *datum* is a finite sequence of 0s and 1s. A *value type* is a 
+correspondence between a species (abstract or concrete) and a set of datums. 
+<div style="text-align: right">
+Alexander Stepanov, Paul McJones — Elements of Programming (EoP)
+</div>
