@@ -55,7 +55,7 @@ equation is the one expressed per element. The `simd<int>` object as a whole
 does not identify a single *entity*¹; a `simd` type is not a *value type*².
 
 The `simd` abstraction is a tool for expressing the same equation on multiple 
-`int` objects in parallel. It's a tool for manipulating multiple entities — a 
+`int` values in parallel. It's a tool for manipulating multiple entities — a 
 tool for applying operators/operations on multiple entities in parallel. 
 Therefore, equational reasoning must work on the level of `int`s. Thus, in 
 order to prove associativity of a single SIMD lane of `int`s, equality must be 
@@ -142,11 +142,11 @@ optimizations developed for the element type.
 ## Proposed alternative: no comparison operators for `simd`
 
 If `simd::operator==` returning `bool` is such a foot-gun in terms of silently 
-introducing logic errors into the code, and `simd::operator==` returning 
-`simd_mask` is considered unacceptable (because `operator==` should only ever 
-return `bool` and nothing else), then why not remove all comparison operators 
-and use free functions instead? For example, instead of `a == b` write 
-`std::simd_equal(a, b)`?
+introducing logic errors into the code, and at the same time some people 
+believe `operator==` returning anything other than `bool` is unacceptable, then 
+why not aim for a compromise and replace all comparison operators with free 
+functions instead? For example, instead of `a == b` write `std::simd_equal(a, 
+b)`?
 
 While, technically, this seems like a workable compromise, it still breaks 
 regularity of the value types contained in the `simd`. Consequently, according 
@@ -154,19 +154,24 @@ to the definition of associativity, `std::simd<int>` would not be associative
 anymore: there is no equality operator to establish equality of the LHS and 
 RHS.
 
-Furthermore, this breaks generic code. This compromise is going against the 
-basic design principle of `simd` that, as much as the language allows, 
-vectorization of an algorithms should only require a change of type from `T` to 
-`simd<T>`. Now, generic code — i.e. also code that doesn't use `simd` — needs 
-to be written with `std::simd_equal` in place of `==`. The next logical step 
-would then replace `simd_mask::operator&&` with `std::simd_logic_and`. And the 
-generic overload for `bool` arguments would then have to break 
-short-circuiting.
+This breaks generic code. Such a compromise would go against the basic design 
+principle of `simd` that, as much as the language allows, vectorization of an 
+algorithms should only require a change of type from `T` to `simd<T>`. Now, 
+generic code — i.e. also code that doesn't use `simd` — needs to be written 
+with `std::simd_equal` in place of `==`. The next logical step would then 
+replace `simd_mask::operator&&` with `std::simd_logic_and`. And the generic 
+overload for `bool` arguments would then have to break short-circuiting.
 
-It has been stated that `simd` should not overload any operators at all, 
+The topic of generic code and comparisons needs another post of its own. This 
+post tries to motivate regularity of the `simd` value types. The consequences 
+in terms of concepts and language improvements will have to wait.
+
+It has also been stated that `simd` should not overload any operators at all, 
 because `==` isn't regular (or because `simd` itself isn't a *value type*). 
 It's probably a solution in the sense that `std::simd` adoption would simply 
-not happen and thus not ever confuse anybody. 😉
+not happen in non-expert settings and thus not ever confuse anybody. 😉 
+Personally, I don't see myself asking scientists to write even less readable 
+code when they implement any non-trivial math.
 
 ## Conclusion
 We have to choose one of the following:
@@ -186,9 +191,9 @@ We have to choose one of the following:
    "Elements of Programming".
 
 In most cases, using `std::simd` as a product type is *wrong* in the sense that 
-it doesn't help with expressing data-parallelism for higher performance. In 
-many cases the use of `std::simd` as a product type trades the use of SIMD 
-instructions for ILP (instruction level parallelism), resulting in a slowdown 
+it doesn't help with expressing data-parallelism for higher performance. The 
+use of `std::simd` as a product type typically trades the use of SIMD 
+instructions for instruction level parallelism (ILP), resulting in a slowdown 
 rather than performance improvement. Therefore, the `std::simd` API tries to 
 discourage such uses. Consequently, `std::regular<std::simd<T>>` must be 
 `false`.
