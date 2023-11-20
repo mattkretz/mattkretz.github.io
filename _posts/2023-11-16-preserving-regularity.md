@@ -33,7 +33,10 @@ example two objects `a` and `b` of type `int` can be compared (`a == b`),
 assigned (`a = b`), destructed (trivial), default constructed (`int a{};`), 
 copy constructed `int a{b}` and there exists a total order defined by `a < b` 
 (the latter is not included in `std::regular`). These are pretty basic 
-guarantees, which we take for granted for builtin types of the language.
+guarantees, which we take for granted for builtin types of the language. The 
+standard library also includes non-regular types, like `std::any` or 
+`std::unique_ptr<T>`. But that's fine, because these types are "tools" and not 
+meant to be used in equations...
 
 ## `std::simd` is meant to be used in equations
 
