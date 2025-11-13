@@ -36,11 +36,11 @@ std::span<std::float16_t> range_of_float16;
 
 | code | CD | after Kona |
 |------|----|------------|
-| `convertible_to<array<string, 4>, vec<int, 4>>` | `true` | `false` |
-| `convertible_to<vec<complex<float>, 4>, vec<float>, 4>` | `true` | `false` |
+| `convertible_to<​array<​string, 4>, vec<​int, 4>>` | `true` | `false` |
+| `convertible_to<​vec<​complex<​float>, 4>, vec<​float>, 4>` | `true` | `false` |
 | `vec<float16_t>(1.f)` | ill-formed | well-formed (explicit conversion) |
-| `unchecked_load<vec<float>>(range_of_complex, flag_convert)` | instantiation failure | `static_assert` |
-| `unchecked_store(v, range_of_float16, flag_convert)` | no viable overload found | well-formed |
+| `unchecked_load<​vec<​float>>(​range_of_complex, flag_convert)` | instantiation failure | `static_assert` |
+| `unchecked_store(​v, range_of_float16, flag_convert)` | no viable overload found | well-formed |
 
 ---
 
