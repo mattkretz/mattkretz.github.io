@@ -8,7 +8,7 @@ tags: [RSE, research software, software architecture, standardization]
 Today I attended a talk by Dr. Florian Mannseicher on [FutuRSI](https://www.futursi.de/)—an "initiative […] to 
 conceptualise a German research software institution". The discussion around critical challenges and concrete needs 
 facing the research software community resonated with me—particularly because I discussed many of these same 
-issues—that are still unresolved—in 2020 in ["Software Engineering as Scientific Infrastructure"]({% post_url 
+issues—still unresolved today—in 2020 in ["Software Engineering as Scientific Infrastructure"]({% post_url 
 2020-05-11-software-engineering-as-scientific-infrastructure %}). I believe FutuRSI should be the place to solve what I 
 wrote about back then. I'll elaborate in this post. Since 2020 our ability to talk about these issues has improved. 
 "Research Software Engineering" (RSE) has become a widely used term. There are conferences on RSE. But the main problem 
@@ -40,8 +40,8 @@ solving the same problems independently.
 
 There's considerable excitement about AI-assisted development and coding agents. While these tools have their place, 
 they don't address the core problems listed above. Large language models can generate code snippets or even complete 
-and complex implementations of non-trivial problems, but they cannot replace the architectural oversight of a senior 
-software engineer.
+implementations of non-trivial problems, but they cannot replace the architectural oversight of a senior software 
+engineer.
 
 A coding agent doesn't understand the long-term maintenance implications of a design decision. It doesn't recognize when 
 three different research groups are independently solving the same problem in incompatible ways. It cannot participate 
@@ -118,9 +118,9 @@ stable funding for permanent positions that back the software projects the wider
 
 ## Where This Leaves Us
 
-The FutuRSI initiative and similar efforts are asking the right questions. The conversation has matured since then, and 
-while late (from my perspective), action now is better than waiting. My 2020 document outlined many of the above 
-thoughts, when the conversation around RSE was less mature. Today, the community recognition is growing.
+The FutuRSI initiative and similar efforts are asking the right questions. The conversation has matured since my 2020 
+document, which outlined these ideas, and while late (from my perspective), action now is better than waiting. 
+Today, the community recognition is growing.
 
 What I envision isn't just another coordination body or networking platform. It's a service organization that does 
 the hard work of consolidating effort, preventing or reducing duplication, and moving complexity upward where it can be 
@@ -133,4 +133,9 @@ accept that much of it will remain fragile, short-lived, and inaccessible to the
 
 I'm publishing this vision to contribute to the ongoing discussion. The details matter, but the direction is clear: 
 research software and its foundations deserve the same level of financial and professional support that is already 
-established for (critical) large-scale research infrastructure.
+established for large-scale research infrastructure.
+
+*Disclaimer: this is my personal opinion—I do not know the position of GSI, or if there is any.*
+
+*AI Disclosure: This post was drafted with LLM assistance and extensively edited by me. All arguments, examples, and 
+conclusions reflect my own views.*

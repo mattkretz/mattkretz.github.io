@@ -3,7 +3,7 @@ layout: default
 ---
 <h1>{{ page.title | markdownify }}</h1>
 <p class="author">
-<span class="date">{{ page.date | date_to_string }} — Written by <a href="/about">{{ page.author }}</a></span><br/>
+<span class="date">{{ page.date | date_to_string }} — Written by <a href="/about">{{ page.author }}</a> {{ page.coauthor }}</span><br/>
 <span class="tags">Tagged as: {{ page.tags | sort_natural | array_to_sentence_string }}</span>
 </p>
 
