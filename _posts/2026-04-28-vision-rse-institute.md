@@ -39,8 +39,9 @@ solving the same problems independently.
 ## What LLMs and Coding Agents Don't Solve
 
 There's considerable excitement about AI-assisted development and coding agents. While these tools have their place, 
-they don't address the core problems listed above. Large language models may generate code snippets or even complete 
-functions at times, but they cannot replace the architectural oversight of a senior software engineer.
+they don't address the core problems listed above. Large language models can generate code snippets or even complete 
+and complex implementations of non-trivial problems, but they cannot replace the architectural oversight of a senior 
+software engineer.
 
 A coding agent doesn't understand the long-term maintenance implications of a design decision. It doesn't recognize when 
 three different research groups are independently solving the same problem in incompatible ways. It cannot participate 
