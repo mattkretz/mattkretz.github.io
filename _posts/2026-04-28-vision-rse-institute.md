@@ -139,3 +139,5 @@ established for large-scale research infrastructure.
 
 *AI Disclosure: This post was drafted with LLM assistance and extensively edited by me. All arguments, examples, and 
 conclusions reflect my own views.*
+
+**Discuss**: [Mastodon](https://floss.social/@mkretz/116486838602302568)
