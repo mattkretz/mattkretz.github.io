@@ -32,7 +32,7 @@ Research software across all disciplines faces the same fundamental challenges:
    influence language standards, compiler development, or library ecosystems. But an institution representing the 
    science community as a whole can.
 
-The overarching goal should be clear: **reduce complexity in research software by moving problems upward in the software 
+The overarching goal should be clear: **reduce complexity in research software by moving problems lower in the software 
 stack.** This means solid software architecture, shared solutions, and reliable standards—not more fragmented projects 
 solving the same problems independently.
 
@@ -123,7 +123,7 @@ document, which outlined these ideas, and while late (from my perspective), acti
 Today, the community recognition is growing.
 
 What I envision isn't just another coordination body or networking platform. It's a service organization that does 
-the hard work of consolidating effort, preventing or reducing duplication, and moving complexity upward where it can be 
+the hard work of consolidating effort, preventing or reducing duplication, and shifting complexity to shared infrastructure where it can be 
 managed professionally. This means making difficult decisions about which projects to consolidate, which standards to 
 champion, and which architectural patterns to promote.
 
