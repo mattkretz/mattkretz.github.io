@@ -53,7 +53,7 @@ The need for human expertise in software architecture and design is arguably *in
 code, because we now need even stronger oversight to ensure that generated code integrates well with existing systems 
 and follows sound architectural principles.
 
-## Moving Problems Upward: A Concrete Vision
+## Reducing Complexity: A Concrete Vision
 
 A central RSE institute should focus on services that consolidate effort and reduce total complexity:
 
