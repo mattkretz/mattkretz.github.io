@@ -18,7 +18,7 @@ However, maybe I'll be able to broaden your perspective on its capabilities and 
 
 ## Some Examples
 
-In this first post—of hopefully many more to come—I'll let my preliminary implementation in GCC 16 speak for itself:
+In this first post—of hopefully many more to come—I'll let the preliminary implementation in GCC 16 speak for itself:
 
 Every following code example will assume the following setup:
 ```c++
