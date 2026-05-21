@@ -259,6 +259,8 @@ Again, send me requests and questions and I'll look into covering them.
 
 Stay tuned — I'll try to make time for more posts on this topic.
 
+**Discuss**: [Mastodon](https://floss.social/@mkretz/116613710972507330)
+
 ***
 
 ## Postscript: Background & Context
