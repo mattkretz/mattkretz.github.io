@@ -255,9 +255,8 @@ That helps us improve the implementation.
 
 While this post does not explain *why* `std::simd` is what it is, I hope these examples give you a taste of what's possible.
 Time permitting, there will be more posts on the background and vision of `std::simd`.
-Again, send me requests and questions and I'll look into covering them.
 
-Stay tuned — I'll try to make time for more posts on this topic.
+Stay tuned.
 
 **Discuss**: [Mastodon](https://floss.social/@mkretz/116613710972507330)
 
