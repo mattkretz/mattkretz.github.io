@@ -201,7 +201,7 @@ We can see:
    `std::simd::basic_vec` requires that both operands have a common type, and since the conversion from `int` to
    `int8_t` is not value-preserving and `vec<int8_t>` is not convertible to `int`, there is no viable `operator/`.
 3. The compiler decided to turn the division by `2` into a bizarre sequence of instructions.
-   That's because x86 lacks native 8-bit integer vector shifts. Instead, the compiler emulates the shift using GF(2⁸) polynomial multiplication—one of the few byte-granular SIMD instructions available on modern hardware.
+   That's because x86 lacks native 8-bit integer vector shifts. Instead, the compiler emulates the shift using GF(2⁸) polynomial multiplication.
 
 ### Binary Compatibility Safeguards
 
